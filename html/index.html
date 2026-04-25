@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>トレーニング一覧</title>
+</head>
+<body>
+
+<h1>トレーニング一覧</h1>
+
+<ul id="list"></ul>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const ids = params.get("ids");
+
+const list = document.getElementById("list");
+
+if (ids) {
+  ids.split(",").forEach(id => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+
+    a.href = id + ".html";
+    a.textContent = id;
+
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+} else {
+  list.innerHTML = "<li>トレーニングが選択されていません</li>";
+}
+</script>
+
+</body>
+</html>
